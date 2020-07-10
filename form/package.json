@@ -1,0 +1,22 @@
+{
+  "name": "form",
+  "version": "1.0.0",
+  "description": "Creating customisable forms with Deta",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fillerink/deta-form.git"
+  },
+  "author": "Sreeram Venkitesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fillerink/deta-form/issues"
+  },
+  "homepage": "https://github.com/fillerink/deta-form#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

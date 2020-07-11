@@ -3,9 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css"
+    />
+    <link rel="stylesheet" href="style.css">
     <title>Deta Forms</title>
 </head>
 <body>
-    <h3>Deta Forms</h3>
+    <br>
+    <div class="maincard">
+        <h1 style="text-align: center;"><span><img class="icon" src="logo.svg"></span>  Deta Forms</h1>
+        <h2 style="width: 70%; margin: 0 auto;">
+            Easily create your own customisable forms with <a target="_blank" href="https://deta.sh">Deta Base</a>
+        </h2>
+    
+        <br>
+
+        <h2 style="font-weight:600; color:#333; width: 70%; margin: 0 auto;">How does it work?</h2>
+        <ul style="font-size:larger; width:70%; margin: 0 auto;"> 
+            <li><h3 style="font-weight: 500; margin:0">Sign in at <span><a target="_blank" href="https://deta.sh">deta.sh</a></span></h3></li>
+            <li><h3 style="font-weight: 500; margin:0">Create a new project and get the project key</h3></li>
+            <li><h3 style="font-weight: 500; margin:0">Add a form in your html </h3></li>
+<pre class="language-markup line-numbers" style="border-radius:15px; margin: 0 auto; padding:0; height:fit-content;"><code>         
+<xmp>    <form method="post" 
+        action="/write" onsubmit="return checkForm()">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname">
+    </form> 
+</xmp>
+</code></pre>
+            <li><h3 style="font-weight: 500; margin:0">In your server side code, validate the data and write into your Base</h3></li>
+<pre class="language-javascript line-numbers" style="border-radius:15px; margin: 0 auto; padding:0; height:fit-content;"><code>         
+<xmp>    const deta = new Deta('project_key')
+    const db = deta.Base('form_db')
+
+    db.put({
+        firstName : req.body.firstName,
+        lastName : req.body.lastName
+    })
+
+    res.redirect("/somewhere_else")
+</xmp>
+</code></pre>
+            <li><h3 style="font-weight: 500; margin:0">Reading the entries from the Base or even run complex queries</h3></li>
+<pre class="language-javascript line-numbers" style="border-radius:15px; margin: 0 auto; padding:0; height:fit-content;"><code>         
+<xmp>    const deta = new Deta('project_key')
+    const db = deta.Base('form_db')
+
+    const entries = await db.fetch().next()
+
+    console.log(entries)
+</xmp>
+</code></pre>
+        </ul>
+        
+
+        <br>
+        
+    </div>
+
+    <br>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
 </body>
 </html>

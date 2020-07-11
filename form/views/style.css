@@ -1,0 +1,40 @@
+body {
+    font-family: 'Cairo';
+}
+
+h1 {
+    font-weight: 500;
+}
+
+h2{
+    font-weight: normal;
+}
+
+.icon{
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+a{
+    color:black;
+}
+
+a:visited{
+    color:black;
+}
+
+a:link{
+    color:black;
+}
+
+.maincard{
+    position:relative;
+    z-index: 1;
+    height: 100%;
+    min-width: 50px;
+    max-width: 1300px;
+    margin: 0 auto;
+    border:solid;
+    border-width:0.5px;
+}

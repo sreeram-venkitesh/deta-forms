@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Template Example</title>
+    <link rel="stylesheet" href="https://unpkg.com/wingcss"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/blocks.css/dist/blocks.min.css" />
+</head>
+<body>
+    <br>
+    <div class="block fixed" style="width: 60%; margin: 0 auto;">
+        <br>
+        <h1 style="margin:auto; text-align:center;">Art Workshop</h1>
+        <form id="inputForm" action="/write" method="POST" onsubmit="return checkForm()">
+            <h2 style="margin-left:10%"> Enter you details</h2>
+            <label style="font-size:x-large; font-weight:400; margin-left:10%">Full Name</label><br>
+            <input id="name" type="text" style="font-size:large; width:300px; margin-left:10%" placeholder="Enter your name"><br>
+            <label style="font-size:x-large; font-weight:400; margin-left:10%">Email</label><br>
+            <input id="email" type="text" style="font-size:large; width:300px;  margin-left:10%" placeholder="Enter your email address"><br>
+            <label style="font-size:x-large; font-weight:400; margin-left:10%">Why do you want to attend this workshop</label><br>
+            <textarea id="answer" type="text" style="font-size:larger; width:600px;  margin-left:10%" placeholder="What makes you interested in this topic?"></textarea><br>
+            <label style="font-size:x-large; font-weight:400; margin-left:10%">Which topic will you be interested in?</label><br>
+            <select id="optionSelected" name="options" id="options" style="font-size:large; width: fit-content; margin-left:10%">
+                <option value="painting">Painting</option>
+                <option value="drawing">Drawing</option>
+                <option value="sketching">Sketching</option>
+                <option value="calligraphy">Calligraphy</option>
+              </select><br><br>
+            <button id="submitButton" type="submit" class="outline" style="font-size:large; margin-left:45%; margin-right:50%; ">Submit</button>
+            <br><br>    
+        </form>
+    </div>
+    <br>
+
+    <script src="./index.js"></script>
+</body>
+</html>

@@ -1,41 +1,42 @@
-// install express with `npm install express` 
+//run npm install after copying this file to your server.js/index.js file
 const express = require('express')
 const { check, validationResult, matchedData } = require('express-validator');
 const bodyParser = require('body-parser')
 
-
 const app = express()
-app.use(bodyParser.urlencoded({ extended: true }))
 
-// parse application/json
+//body-parser is used to access req.body
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-
-app.use(express.static(__dirname + '/views'));
-app.set('view engine', 'ejs');
-
 app.get('/', (req, res) => res.render('index'))
-
-app.get('/tutorial', (req, res) => res.render('tutorial'))
-
-app.get('/templates', (req, res) => res.render('templates'))
-
-app.get('/simple', (req, res) => res.render('simple'))
 
 app.post('/write',
     [
     check("name"),
     check("email"),
-      check("answer"),
-      check("optionSelected")   
+    check("answer"),
+    check("optionSelected")   
     ],
     (req,res) => {
+    
+    //validation
     const errors = validationResult(req);
     const data = matchedData(req);
-    console.log("Sanitized: ", data);
+    
+    console.log(data)
 
+    const deta = new Deta('project_key')
+    const db = deta.Base('form_db')
+    
+    db.put({
+        name : req.body.name,
+        email : req.body.email,
+        answer : req.body.answer,
+        option : req.body.optionSelected
+    })
 
-    res.redirect('/')
+    res.redirect("/") //replace the path to where you want to redirect instead of /
 })
 
 const PORT = 3000

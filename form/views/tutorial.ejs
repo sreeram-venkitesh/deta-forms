@@ -53,18 +53,25 @@
 </code></pre>
             <li><h3 style="font-weight: 500; margin:0">In your server side code, validate the data and write into your Base</h3></li>
 <pre class="language-javascript line-numbers" style="border-radius:15px; margin: 0 auto; padding:0; height:fit-content;"><code>         
-<xmp>    const deta = new Deta('project_key')
-    const db = deta.Base('form_db')
+<xmp>    app.post('/write',
+    [ check("fname"),
+      check("lname")  
+    ],
+    (req,res) => {
+    
+        const deta = new Deta('project_key')
+        const db = deta.Base('form_db')
+        
+        db.put({
+            fname : req.body.fname,
+            lname : req.body.lname,
+        })
 
-    db.put({
-        firstName : req.body.firstName,
-        lastName : req.body.lastName
+        res.redirect("/") 
     })
-
-    res.redirect("/somewhere_else")
 </xmp>
 </code></pre>
-            <li><h3 style="font-weight: 500; margin:0">Read entries from the Base or even run complex queries</h3></li>
+            <li><h3 style="font-weight: 500; margin:0">Read entries from the Base or even run complex queries as you need</h3></li>
 <pre class="language-javascript line-numbers" style="border-radius:15px; margin: 0 auto; padding:0; height:fit-content;"><code>         
 <xmp>    const deta = new Deta('project_key')
     const db = deta.Base('form_db')
